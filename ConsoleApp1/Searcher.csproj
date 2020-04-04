@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6018C83D-CD4B-405F-95F3-11595599DD24}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp1</RootNamespace>
-    <AssemblyName>ConsoleApp1</AssemblyName>
+    <RootNamespace>Searcher</RootNamespace>
+    <AssemblyName>Searcher</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,8 +31,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Searcher.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CyberBalance.CS.Core">
+      <HintPath>D:\dev\CyberScope\CyberScopeBranch\CSwebdev\code\CyberScope\bin\CyberBalance.CS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CyberBalance.CS.Web.UI">
+      <HintPath>D:\dev\CyberScope\CyberScopeBranch\CSwebdev\code\CyberScope\bin\CyberBalance.CS.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="CyberBalance.VB.Core">
+      <HintPath>D:\dev\CyberScope\CyberScopeBranch\CSwebdev\code\CyberScope\bin\CyberBalance.VB.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CyberBalance.VB.Web.UI">
+      <HintPath>D:\dev\CyberScope\CyberScopeBranch\CSwebdev\code\CyberScope\bin\CyberBalance.VB.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="SOM">
+      <HintPath>..\..\SledgeOMatic\SledgeOMatic\bin\Debug\SOM.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,11 +61,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Parser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
