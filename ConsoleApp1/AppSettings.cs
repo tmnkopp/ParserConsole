@@ -13,5 +13,9 @@ namespace Searcher
             public static string SourceDir = ConfigurationManager.AppSettings["SourceDir"].ToString();
             public static string DestDir = ConfigurationManager.AppSettings["DestDir"].ToString();
             public static string ExcludeList = ConfigurationManager.AppSettings["ExcludeList"].ToString();
+
+            public static string DirCustomControls = @"D:\dev\CyberScope\CyberScopeBranch\CSwebdev\code\CyberScope\CustomControls\TIC_*";
+            public static string DirCode = @"D:\dev\CyberScope\CyberScopeBranch\CSwebdev\code\CyberScope\";
+            public static string DirDB = @"D:\dev\CyberScope\CyberScopeBranch\CSwebdev\database\functions\";
     }
 }

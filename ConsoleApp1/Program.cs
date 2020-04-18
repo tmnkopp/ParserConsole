@@ -9,35 +9,39 @@ using SOM;
 using SOM.IO;
 using SOM.Parsers;
 using SOM.Procedures;
-
+using SOM.Extentions;
 namespace Searcher
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Console.Write("S>");
-            //string result = Console.ReadLine();
 
-            ParseBuilder<Parser> parser = new ParseBuilder<Parser>();
-            parser.Find("Panel1") 
-                .FileFilter("*aspx*")
-                .Parse(); 
+            Cache.Write("");
+            ParseBuilder <AppSettingsParser> PB = new ParseBuilder<AppSettingsParser>();
+            PB.Init()  
+                .Compilers(new List<ICompiler>() {
+                    new LineExtractor("ngModel", 1),
+                    new RegexCompile(@"\[  ~~~~~ *\]", "")
+                })
+                .ParseTo( new SOM.IO.CacheEditor() );
 
+            Cache.Write(
+                Cache.Read().RemoveEmptyLines()
+            );
+            Cache.CacheEdit();
         }
-        public class Parser : BaseParser
+
+        public class AppSettingsParser : BaseParser
         {
-            public Parser()
+            public AppSettingsParser()
             {
-                DirSource = AppSettings.SourceDir;
+                //Path = @"c:\temp\save\*merge*.txt"; // AppSettings.DirCustomControls;
+                Path = @"C:\Users\Tim\source\repos\somuing\src\app\*.html";
                 ExcludeList.AddRange(AppSettings.ExcludeList.Split(new char[] { ',' }));
-            }
-            public override string ParseFinding(string content)
-            {
-                string result = new LineExtractor(Find, 3, false).Execute(content);
-                string s = new string('#', 255);
-                return $"{result}\n{s}\n";
-            }
+                ExcludeList.AddRange("\\Triggers,\\Utils,\\InProgress".Split(new char[] { ',' }));
+       
+            } 
         } 
     }
 }
