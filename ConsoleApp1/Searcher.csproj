@@ -47,9 +47,6 @@
     <Reference Include="CyberBalance.VB.Web.UI">
       <HintPath>D:\dev\CyberScope\CyberScopeBranch\CSwebdev\code\CyberScope\bin\CyberBalance.VB.Web.UI.dll</HintPath>
     </Reference>
-    <Reference Include="SOM">
-      <HintPath>..\..\SledgeOMatic\SledgeOMatic\bin\Debug\SOM.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -69,6 +66,12 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SledgeOMatic\SledgeOMatic\SledgeOMatic.csproj">
+      <Project>{1d77eee9-daac-42a7-92cf-08b462383397}</Project>
+      <Name>SledgeOMatic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
