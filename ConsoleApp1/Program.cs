@@ -16,13 +16,21 @@ namespace Searcher
     {
         static void Main(string[] args)
         {
-            //new LineExtractor("COLUMN", 5)
-            ParseBuilder<DBParser> PB = new ParseBuilder<DBParser>();
-            PB.AddCompiler(new LineExtractor("INSERT INTO AuditLog", 2))
-              .ParseTo(  new CacheWriter(), (r)=>(r)  ); 
+            //BlockExtractor
+            CodeBaseParser parse = new CodeBaseParser();
+            parse.ParseResultMode = ParseResultMode.Verbose;
+            parse.Parsers.Add(new LineExtractor("http:", 0)); 
+            parse.ParseTo(new CacheWriter());
             Cache.CacheEdit(); 
         }
-        //       
+        public class CustomParse : BaseParser
+        {
+            public CustomParse()
+            {
+                Path = @"C:\Users\Tim\source\repos\AssistWith2\AssistWith2\Pages\Clients\*";
+            }
+        }
+
         public class DBParser : BaseParser
         {
             public DBParser()
@@ -33,6 +41,7 @@ namespace Searcher
                 //this.Compilers.Add(new RegexCompile("--.*", "")); 
             }
         }
+     
         public class CodeBaseParser : BaseParser
         {
             public CodeBaseParser()
